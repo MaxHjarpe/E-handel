@@ -77,5 +77,8 @@ function displayCart() {
         `</div>`;
 }
 
+function creditCard() {
+    document.querySelector(".cc-div").classList.toggle("cc-div");
+}
 // Se alltid till att försöka hitta customerID på varje sida
 getCustomerId();
