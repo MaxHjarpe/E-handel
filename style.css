@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.item {
+    min-width: 40%;
+    flex: 1;
+    margin: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: khaki;
+    padding: 10px;
+}
+
+.cartcontainer {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.cartitem {
+    width: 100%;
+    margin: 10px;
+}
+
+.cartitem:last-child {
+    background-color: burlywood;
+}
+
+.formdiv {
+    margin: 10px;
+    border: 1px solid black;
+    padding: 10px;
+}
