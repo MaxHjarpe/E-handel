@@ -41,6 +41,10 @@ a {
     text-decoration: none;
 }
 
-.cc-div {
+.hide {
     display: none;
 }
+
+/* .swish-div {
+    display: none;
+} */

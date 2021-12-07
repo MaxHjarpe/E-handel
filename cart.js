@@ -1,8 +1,8 @@
 // Array med alla produkter
 const products = [
-    { id: 1, title: "Rubrik", description: "Beskrivning", price: 123 },
-    { id: 2, title: "Rubrik B", description: "Beskrivning B", price: 456 },
-    { id: 3, title: "Rubrik C", description: "Beskrivning C", price: 789 },
+    { id: 1, title: "Minecraft 2", description: "New and improved", price: 2 },
+    { id: 2, title: "ActivatingHawkeye - domain", description: "One of the greatest websites out there currently! And it's yours for the low-low price of tree-fiddy", price: 3.50 },
+    { id: 3, title: "Gustavs basker", description: "Headwear for all your cold December needs", price: 68 },
 ];
 
 // Hjälpfunktion som tar fram ett unikt "customer ID" från localstorage om det finns
@@ -44,8 +44,8 @@ function displayProducts() {
             `<div class="item">` +
             `<h2>${product.title}</h2>` +
             `<p>${product.description}</p>` +
-            `<p>Pris: <b>${product.price}</b></p>` +
-            `<button onclick="addToCart(${product.id})">Köp</button>`;
+            `<p>Price: <b>${product.price}:-</b></p>` +
+            `<button onclick="addToCart(${product.id})">BUY</button>`;
     }
 }
 
@@ -63,7 +63,7 @@ function displayCart() {
             if (product.id == id) {
                 container.innerHTML +=
                     `<div class="cartitem">` +
-                    `<p><b>${product.title}</b>: ${product.price} SEK</p>` +
+                    `<p><b>${product.title}</b>: ${product.price}:-</p>` +
                     `</div>`;
 
                 totalPrice += product.price;
@@ -73,12 +73,25 @@ function displayCart() {
 
     container.innerHTML +=
         `<div class="cartitem">` +
-        `<p><b>Totalt</b>: ${totalPrice} SEK</p>` +
+        `<p><b>Total</b>: ${totalPrice}:-</p>` +
         `</div>`;
 }
 
-function creditCard() {
-    document.querySelector(".cc-div").classList.toggle("cc-div");
+function paymentOption(x) {
+
+    if (x == 1) {
+        document.querySelector("#cc").classList.remove("hide");
+        document.querySelector("#swish").classList.add("hide");
+    } else {
+        document.querySelector("#cc").classList.add("hide");
+        document.querySelector("#swish").classList.remove("hide");
+    }
+}
+
+function validateForm() {
+    let firstName = document.querySelector("#firstName").value;
+    document.querySelector("#paymentHeader").innerText += firstName;
+    localStorage.setItem("firstName", firstName);
 }
 // Se alltid till att försöka hitta customerID på varje sida
 getCustomerId();

@@ -10,33 +10,40 @@
 
 <body>
     <h1>TUC Sales</h1>
-    <h2>Betalning</h2>
+    <h2>Payment</h2>
     <div class="formdiv">
         <form>
             <!-- Payment Options -->
-            <h3>Payment Options</h3>
-            <label for="payment">Creditcard</label>
-            <input type="radio" onclick="creditCard()" name="payment" id="paymentCC" checked><br>
+            <h3 id="paymentHeader">NAMN, please choose a payment method</h3>
+            <label for="payment">Credit card</label>
+            <input type="radio" onclick="paymentOption(1)" name="payment" id="paymentCC"><br>
 
             <label for="payment">Swish</label>
-            <input onclick="" type="radio" name="payment" id="paymentSwish"><br>
+            <input onclick="paymentOption()" type="radio" name="payment" id="paymentSwish"><br>
 
             <!-- kreditkortsuppgifter -->
-            <div class="cc-div">
-                <label for="creditcard">Creditcard number</label>
-                <input type="number" name="creditcard" id="creditcard">
+            <div class="hide" id="cc"><br>
+                <label for="creditcard">Credit card number</label><br>
+                <input type="number" name="creditcard" id="creditcard"><br>
 
-                <label for="expirationdate">Expiration date</label>
-                <input type="month" name="expirationdate" id="expirationdate">
+                <label for="expirationdate">Expiration date</label><br>
+                <input type="month" name="expirationdate" id="expirationdate"><br>
 
-                <label for="cvc">CVC</label>
+                <label for="cvc">CVC</label><br>
                 <input type="number" name="cvc" id="cvc"><br>
 
                 <label for="terms">I agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">terms of
                         service</a></label>
                 <input type="checkbox" name="terms" id="terms"><br><br>
+                <button onclick="pay()">Pay with Credit Card</button>
+                
             </div>
-            <button onclick="pay()">Betala!</button>
+            <div class="hide" id="swish">
+                <p>hej swish</p>
+                <button onclick="pay()">Pay with Swish</button> 
+                
+            </div>
+            
         </form>
     </div>
     <script src="cart.js"></script>

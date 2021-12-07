@@ -10,39 +10,39 @@
 
 <body>
     <h1>TUC Sales</h1>
-    <h2>Ange din information</h2>
+    <h2>Your cart</h2>
     <div class="cartcontainer">
 
     </div>
     <div class="formdiv">
-        <form>
+        <form action="checkout_2.html" onsubmit="return validateForm()">
             <h3>Fill in your information</h3>
             <!-- - Namn -->
             <label for="firstName">First Name</label><br>
-            <input type="text" name="firstName" id="firstName"><br>
+            <input type="text" name="firstName" id="firstName" pattern="[A-Öa-ö]{1,}" title="Only use A-Ö" required><br>
 
             <label for="lastName">Last Name</label><br>
-            <input type="text" name="lastName" id="lastName"><br>
-
-            <!-- - Adress -->
-            <label for="address">Address</label><br>
-            <input type="text" name="address" id="address"><br>
-
-            <!-- - Postnummer, postort -->
-            <label for="zipcode">Zip Code/Postal Code</label><br>
-            <input type="number" name="zipcode" id="zipcode"><br>
+            <input type="text" name="lastName" id="lastName" pattern="[A-Öa-ö]{1,}" title="Only use A-Ö" required><br>
 
             <!-- - Email -->
             <label for="email">Email</label><br>
-            <input type="email" name="email" id="email"><br>
+            <input type="email" name="email" id="email" required><br>
+
+            <!-- - Adress -->
+            <label for="address">Address</label><br>
+            <input type="text" name="address" id="address" required><br>
+
+            <!-- - Postnummer, postort -->
+            <label for="zipcode">Zip Code/Postal Code</label><br>
+            <input type="text" name="zipcode" id="zipcode" pattern="[0-9]{5}" required><br>
 
             <label for="terms">I agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms of
                     Service</a></label>
-            <input type="checkbox" name="terms" id="terms"><br><br>
+            <input type="checkbox" name="terms" id="terms" required><br><br>
 
-
+            <input type="submit" value="Register">
         </form>
-        <button onclick="window.location.href='checkout_2.html'">To Payment</button>
+
     </div>
     <script src="cart.js"></script>
     <script>
