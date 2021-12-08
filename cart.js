@@ -82,16 +82,66 @@ function paymentOption(x) {
     if (x == 1) {
         document.querySelector("#cc").classList.remove("hide");
         document.querySelector("#swish").classList.add("hide");
+        localStorage.setItem("credit", "ja");
+        localStorage.setItem("swish", "nej");
     } else {
         document.querySelector("#cc").classList.add("hide");
         document.querySelector("#swish").classList.remove("hide");
+        localStorage.setItem("swish", "ja");
+        localStorage.setItem("credit", "nej");
     }
 }
 
-function validateForm() {
+function formSubmit() {
     let firstName = document.querySelector("#firstName").value;
-    document.querySelector("#paymentHeader").innerText += firstName;
     localStorage.setItem("firstName", firstName);
+    let lastName = document.querySelector("#lastName").value;
+    localStorage.setItem("lastName", lastName);
+    let email = document.querySelector("#email").value;
+    localStorage.setItem("email", email);
+    let address = document.querySelector("#address").value;
+    localStorage.setItem("address", address);
+    let zipcode = document.querySelector("#zipcode").value;
+    localStorage.setItem("zipcode", zipcode);
 }
+
+function printUsersName() {
+    document.getElementById("paymentHeader").innerHTML = localStorage.getItem("firstName") + ", please choose a payment method";
+}
+
+function validateForm() { // Check if the card has expired or not
+    yearToday = new Date().getFullYear();
+    monthToday = new Date().getMonth() + 1;
+    let expYear = document.querySelector("#year").value;
+    let expMonth = document.querySelector("#month").value;
+
+    expYear = parseInt("20" + expYear);
+
+    if (expMonth < 10) {
+        expMonth = parseInt(expMonth.substr(1, expMonth.length));
+    }
+
+    if (expYear <= yearToday) {
+        if (expMonth < monthToday) {
+            alert("Your card has expired");
+            document.getElementById("#")
+            return false;
+        }
+    }
+    alert("Valid card, proceed");
+    return true;
+
+
+
+
+
+
+
+}
+
+function pay() {
+
+}
+
 // Se alltid till att försöka hitta customerID på varje sida
 getCustomerId();

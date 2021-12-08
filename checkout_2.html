@@ -12,9 +12,10 @@
     <h1>TUC Sales</h1>
     <h2>Payment</h2>
     <div class="formdiv">
-        <form>
+        <form onsubmit="return validateForm()">
             <!-- Payment Options -->
             <h3 id="paymentHeader">NAMN, please choose a payment method</h3>
+
             <label for="payment">Credit card</label>
             <input type="radio" onclick="paymentOption(1)" name="payment" id="paymentCC"><br>
 
@@ -23,30 +24,47 @@
 
             <!-- kreditkortsuppgifter -->
             <div class="hide" id="cc"><br>
-                <label for="creditcard">Credit card number</label><br>
-                <input type="number" name="creditcard" id="creditcard"><br>
 
-                <label for="expirationdate">Expiration date</label><br>
-                <input type="month" name="expirationdate" id="expirationdate"><br>
+                <label for="creditcard">Credit card number</label><br>
+                <input inputmode="numeric" pattern="[0-9]{16}" maxlength="16" type="text" name="creditcard"
+                    id="creditcard" required><br>
+
+                <span class="expiration">
+                    <fieldset>
+                        <legend>Expiration date</legend>
+                        <input type="text" id="month" name="month" placeholder="MM" pattern="^(0?[1-9]|1[012])$"
+                            maxlength="2" size="2" required>
+                        <span>/</span>
+                        <input type="text" id="year" name="year" placeholder="YY" pattern="^(2?[1-4])$" maxlength="2"
+                            size="2" required>
+                    </fieldset>
+                </span>
 
                 <label for="cvc">CVC</label><br>
-                <input type="number" name="cvc" id="cvc"><br>
+                <input inputmode="numeric" pattern="[0-9]{3}" maxlength="3" type="text" name="cvc" id="cvc"
+                    required><br>
 
                 <label for="terms">I agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">terms of
                         service</a></label>
-                <input type="checkbox" name="terms" id="terms"><br><br>
-                <button onclick="pay()">Pay with Credit Card</button>
-                
-            </div>
-            <div class="hide" id="swish">
-                <p>hej swish</p>
-                <button onclick="pay()">Pay with Swish</button> 
-                
-            </div>
-            
+                <input type="checkbox" name="terms" id="terms" required><br><br>
+
+                <input type="submit" value="Purchase"></input>
         </form>
     </div>
+    <form onsubmit="">
+        <div class="hide" id="swish"><br>
+            <label for="phone">Phone number</label><br>
+            <input inputmode="numeric" type="tel" name="phone" id="phone" pattern="[0-9]{10}" maxlength="10" required>
+            <input type="submit" value="Purchase">
+    </form>
+    </div>
+
+
+    </div>
     <script src="cart.js"></script>
+    <script>
+        printUsersName();
+    </script>
 </body>
 
 </html>

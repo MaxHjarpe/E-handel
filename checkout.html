@@ -15,14 +15,16 @@
 
     </div>
     <div class="formdiv">
-        <form action="checkout_2.html" onsubmit="return validateForm()">
+        <form action="checkout_2.html" onsubmit="formSubmit()">
             <h3>Fill in your information</h3>
             <!-- - Namn -->
             <label for="firstName">First Name</label><br>
-            <input type="text" name="firstName" id="firstName" pattern="[A-Öa-ö]{1,}" title="Only use A-Ö" required><br>
+            <input type="text" name="firstName" id="firstName" pattern="[A-Öa-ö]*" maxlength="35" title="Only use A-Ö"
+                required><br>
 
             <label for="lastName">Last Name</label><br>
-            <input type="text" name="lastName" id="lastName" pattern="[A-Öa-ö]{1,}" title="Only use A-Ö" required><br>
+            <input type="text" name="lastName" id="lastName" pattern="[A-Öa-ö\-]*" maxlength="35" title="Only use A-Ö"
+                required><br>
 
             <!-- - Email -->
             <label for="email">Email</label><br>
@@ -30,11 +32,12 @@
 
             <!-- - Adress -->
             <label for="address">Address</label><br>
-            <input type="text" name="address" id="address" required><br>
+            <input type="text" name="address" id="address" maxlength="85" required><br>
 
             <!-- - Postnummer, postort -->
             <label for="zipcode">Zip Code/Postal Code</label><br>
-            <input type="text" name="zipcode" id="zipcode" pattern="[0-9]{5}" required><br>
+            <input type="text" name="zipcode" id="zipcode" pattern="[0-9]{5}" maxlength="5"
+                title="Five numbers 0-9. No whitespace or hyphens allowed." required><br>
 
             <label for="terms">I agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms of
                     Service</a></label>
