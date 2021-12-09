@@ -14,8 +14,14 @@
     <div class="cartcontainer">
 
     </div>
+
     <div class="formdiv">
-        <form action="checkout_2.html" onsubmit="formSubmit()">
+        <button onclick="window.location.href='index.html'">Back to shopping</button>
+        <button class="button" onclick="removeItems()">Empty cart<img class="removeItem" src="trashbin.png"></button>
+    </div>
+
+    <div class="formdiv">
+        <form action="checkout_2.html" onsubmit="return formSubmit()">
             <h3>Fill in your information</h3>
             <!-- - Namn -->
             <label for="firstName">First Name</label><br>

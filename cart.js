@@ -22,9 +22,10 @@ function getCustomerId() {
 
 // Funktion som lägger till produkt med ett visst ID till localstorage
 function addToCart(id) {
+
     for (let product of products) {
         if (product.id === id) {
-            localStorage.setItem("cart", localStorage.getItem("cart") + id + ",")
+            localStorage.setItem("cart", localStorage.getItem("cart") + id + ",");
         }
     }
 }
@@ -64,7 +65,7 @@ function displayCart() {
                 container.innerHTML +=
                     `<div class="cartitem">` +
                     `<p><b>${product.title}</b>: ${product.price}:-</p>` +
-                    `</div>`;
+                    `</div><hr>`;
 
                 totalPrice += product.price;
             }
@@ -93,16 +94,22 @@ function paymentOption(x) {
 }
 
 function formSubmit() {
-    let firstName = document.querySelector("#firstName").value;
-    localStorage.setItem("firstName", firstName);
-    let lastName = document.querySelector("#lastName").value;
-    localStorage.setItem("lastName", lastName);
-    let email = document.querySelector("#email").value;
-    localStorage.setItem("email", email);
-    let address = document.querySelector("#address").value;
-    localStorage.setItem("address", address);
-    let zipcode = document.querySelector("#zipcode").value;
-    localStorage.setItem("zipcode", zipcode);
+    if (localStorage.getItem("cart") == 0 || localStorage.getItem("cart") == null) {
+        alert("You can't proceed with an empty cart");
+        return false;
+    } else {
+        let firstName = document.querySelector("#firstName").value;
+        localStorage.setItem("firstName", firstName);
+        let lastName = document.querySelector("#lastName").value;
+        localStorage.setItem("lastName", lastName);
+        let email = document.querySelector("#email").value;
+        localStorage.setItem("email", email);
+        let address = document.querySelector("#address").value;
+        localStorage.setItem("address", address);
+        let zipcode = document.querySelector("#zipcode").value;
+        localStorage.setItem("zipcode", zipcode);
+        return true;
+    }
 }
 
 function printUsersName() {
@@ -123,25 +130,40 @@ function validateForm() { // Check if the card has expired or not
 
     if (expYear <= yearToday) {
         if (expMonth < monthToday) {
-            alert("Your card has expired");
-            document.getElementById("#")
+            alert("Your card has expired, try with another card");
             return false;
         }
     }
     alert("Valid card, proceed");
-    return true;
+    window.location.href = ("thankyou.html");
+    return false;
+}
 
-
-
-
-
-
+function swishPay() {
+    document.querySelector("#swishCheckout").classList.toggle("hide");
+    let phone = document.querySelector("#phone").value;
+    localStorage.setItem("phone", phone);
+    return false;
 
 }
 
-function pay() {
-
+function removeItems() {
+    localStorage.clear("cart");
+    let refresh = document.querySelector(".cartcontainer");
+    refresh.innerHTML = `<div class="cartitem">` +
+        `<p><b>Total</b>: 0:-</p>` +
+        `</div>`
+    // <button class="button" onclick="removeItems()">Empty cart 
+    //     <img class="removeItem" src="trashbin.png"></button>
 }
+
+function thankYou() {
+    document.querySelector("#thanks").innerText = "Thanks for your order " + localStorage.getItem("firstName") +
+        " " + localStorage.getItem("lastName") + "!";
+    document.querySelector("#shipment").innerHTML = "We will be shipping it to your address: " + localStorage.getItem("address") + ".";
+    document.querySelector("#receipt").innerText = "Your receipt can be found on your email address " + localStorage.getItem("email");
+}
+
 
 // Se alltid till att försöka hitta customerID på varje sida
 getCustomerId();

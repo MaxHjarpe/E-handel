@@ -11,6 +11,8 @@
 <body>
     <h1>TUC Sales</h1>
     <h2>Payment</h2>
+
+
     <div class="formdiv">
         <form onsubmit="return validateForm()">
             <!-- Payment Options -->
@@ -49,21 +51,31 @@
                 <input type="checkbox" name="terms" id="terms" required><br><br>
 
                 <input type="submit" value="Purchase"></input>
+            </div>
+        </form>
+
+        <form onsubmit="return swishPay()">
+            <div class="hide" id="swish"><br>
+                <label for="phone">Phone number</label><br>
+                <input inputmode="numeric" type="tel" name="phone" id="phone" pattern="^(07?[02369]{1}[0-9]{7})"
+                    title="Enter a valid Swedish phone number without hyphens or whitespace" maxlength="10"
+                    required><br>
+                <input type="submit" value="Purchase"></input>
+
+                <div id="swishCheckout" class="hide">
+                    <button class="cancel" onclick="window.location.href='thankyou.html'">All done</button>
+                </div>
+            </div>
         </form>
     </div>
-    <form onsubmit="">
-        <div class="hide" id="swish"><br>
-            <label for="phone">Phone number</label><br>
-            <input inputmode="numeric" type="tel" name="phone" id="phone" pattern="[0-9]{10}" maxlength="10" required>
-            <input type="submit" value="Purchase">
-    </form>
-    </div>
-
+    <div class="cartcontainer">
 
     </div>
     <script src="cart.js"></script>
+
     <script>
         printUsersName();
+        displayCart();
     </script>
 </body>
 

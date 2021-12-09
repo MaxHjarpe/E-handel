@@ -1,46 +1,84 @@
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
 }
 
 .item {
-    min-width: 40%;
-    flex: 1;
-    margin: 3px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: khaki;
-    padding: 10px;
+  min-width: 40%;
+  flex: 1;
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: khaki;
+  padding: 10px;
 }
 
 .cartcontainer {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
 }
 
 .cartitem {
-    width: 100%;
-    margin: 10px;
+  width: 100%;
+  margin: 10px;
 }
 
 .cartitem:last-child {
-    background-color: burlywood;
+  background-color: rgb(255, 255, 255);
 }
 
 .formdiv {
-    margin: 10px;
-    border: 1px solid black;
-    padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .hide {
-    display: none;
+  display: none;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border: none;
+  opacity: 0.7;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 1;
+  color: red;
+}
+
+.removeItem {
+  width: 20px;
+  height: 15px;
+}
+
+#swishCheckout {
+  background-image: url(swishbakgrund.png);
+  background-repeat: no-repeat;
+  width: 1200px;
+  height: 772px;
+}
+.cancel {
+    position: absolute;
+    top: 800px;
+    left: 659px;
+}
+
+#paymentSwish {
+  cursor: pointer;
+}
+
+#paymentCC {
+  cursor: pointer;
 }
