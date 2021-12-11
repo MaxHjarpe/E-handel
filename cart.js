@@ -148,14 +148,12 @@ function swishPay() {
 }
 
 function removeItems() {
-    
-    localStorage.clear("cart");
+
+    localStorage.removeItem("cart");
     let refresh = document.querySelector(".cartcontainer");
     refresh.innerHTML = `<div class="cartitem">` +
         `<p><b>Total</b>: 0:-</p>` +
         `</div>`
-
-
 }
 
 function thankYou() {
