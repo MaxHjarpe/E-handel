@@ -148,13 +148,14 @@ function swishPay() {
 }
 
 function removeItems() {
+    
     localStorage.clear("cart");
     let refresh = document.querySelector(".cartcontainer");
     refresh.innerHTML = `<div class="cartitem">` +
         `<p><b>Total</b>: 0:-</p>` +
         `</div>`
-    // <button class="button" onclick="removeItems()">Empty cart 
-    //     <img class="removeItem" src="trashbin.png"></button>
+
+
 }
 
 function thankYou() {
