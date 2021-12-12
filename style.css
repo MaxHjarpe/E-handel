@@ -17,9 +17,11 @@
 }
 
 .cartcontainer {
+  float: left;
   padding: 10px;
   margin: 10px;
   border: 1px solid black;
+  width: 20%;
 }
 
 .cartitem {
@@ -32,6 +34,14 @@
 }
 
 .formdiv {
+  float: right;
+  margin: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  width: 20%;
+}
+
+.paydiv {
   margin: 10px;
   border: 1px solid black;
   padding: 10px;

@@ -1,8 +1,8 @@
 // Array med alla produkter
 const products = [
     { id: 1, title: "Minecraft 2", description: "New and improved", price: 2 },
-    { id: 2, title: "ActivatingHawkeye - domain", description: "One of the greatest websites out there currently! And it's yours for the low-low price of tree-fiddy", price: 3.50 },
-    { id: 3, title: "Gustavs basker", description: "Headwear for all your cold December needs", price: 68 },
+    { id: 2, title: "Gustavs basker", description: "Headwear for all your cold December needs", price: 68 },
+    { id: 3, title: "ActivatingHawkeye - domain", description: "One of the greatest websites out there currently! And it's yours for the low-low price of tree-fiddy", price: 3.50 },
 ];
 
 // Hjälpfunktion som tar fram ett unikt "customer ID" från localstorage om det finns
@@ -157,12 +157,25 @@ function removeItems() {
 }
 
 function thankYou() {
-    document.querySelector("#thanks").innerText = "Thanks for your order " + localStorage.getItem("firstName") +
+    document.querySelector("#thanks").innerText = "Thank you for your order, " + localStorage.getItem("firstName") +
         " " + localStorage.getItem("lastName") + "!";
-    document.querySelector("#shipment").innerHTML = "We will be shipping it to your address: " + localStorage.getItem("address") + ".";
+    document.querySelector("#shipment").innerHTML = "We will be shipping it to your address: " + localStorage.getItem("address");
     document.querySelector("#receipt").innerText = "Your receipt can be found on your email address " + localStorage.getItem("email");
 }
 
 
 // Se alltid till att försöka hitta customerID på varje sida
 getCustomerId();
+
+
+/* 
+Jag testade min hemsida på en äldre version av Mozilla Firefox, version 38.0 för att vara exakt. Där stöter jag på problem direkt.
+Webbläsaren kastar Syntax-errors samt Reference-errors på mig. Syntax-errorsen den menar på finns är avsaknaden av semikolon, även om det finns semikolon på de platser
+som webbläsaren hänvisar till. 
+
+Reference-errorsen säger att funktionerna i scriptet inte är definierade. Jag sökte runt lite på nätet och kom inte egentligen fram till något
+konkret om varför. HTML samt den lilla CSS som jag har fungerade, men som sagt inga funktioner. Jag försökte debugga i devtoolsen och
+blev fundersam om mitt script över huvud taget lästes in, för jag kunde inte hitta det någonstans i webbläsaren. Det tillsammans med det faktum att
+de enda funktionerna som det klagades på i konsolen var dem som låg i <script>-taggar eller dem som var kopplade till en knapp. Det ledde mig att tro
+att webbläsaren gjorde så gott den kunde, men när funktionerna blev kallade så fanns inga referenser till dem.
+*/
