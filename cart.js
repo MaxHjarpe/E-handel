@@ -78,7 +78,7 @@ function displayCart() {
         `</div>`;
 }
 
-function paymentOption(x) {
+function paymentOption(x) { // switches between the two payment alternatives 
 
     if (x == 1) {
         document.querySelector("#cc").classList.remove("hide");
@@ -93,7 +93,7 @@ function paymentOption(x) {
     }
 }
 
-function formSubmit() {
+function formSubmit() { // user can't go to payment or checkout_2.html unless the cart has items
     if (localStorage.getItem("cart") == 0 || localStorage.getItem("cart") == null) {
         alert("You can't proceed with an empty cart");
         return false;
@@ -112,7 +112,7 @@ function formSubmit() {
     }
 }
 
-function printUsersName() {
+function printUsersName() { // displays users inputed name on the next page 
     document.getElementById("paymentHeader").innerHTML = localStorage.getItem("firstName") + ", please choose a payment method";
 }
 
@@ -134,20 +134,20 @@ function validateForm() { // Check if the card has expired or not
             return false;
         }
     }
-    alert("Valid card, proceed");
+    alert("Valid card, proceed"); // issue here, it doesnt take me to the thankyou.html unless I return false. This is not correct and should be done differently
     window.location.href = ("thankyou.html");
     return false;
 }
 
-function swishPay() {
+function swishPay() { // if the user correctly inputs a phone number, shows the swish picture
     document.querySelector("#swishCheckout").classList.toggle("hide");
     let phone = document.querySelector("#phone").value;
     localStorage.setItem("phone", phone);
-    return false;
+    return false; // used because we are not actually sending anything anyway and dont want the page to reload
 
 }
 
-function removeItems() {
+function removeItems() { // removes all items in the cart and refreshes the div with the items inside it
 
     localStorage.removeItem("cart");
     let refresh = document.querySelector(".cartcontainer");
@@ -156,7 +156,7 @@ function removeItems() {
         `</div>`
 }
 
-function thankYou() {
+function thankYou() { // thank you page text
     document.querySelector("#thanks").innerText = "Thank you for your order, " + localStorage.getItem("firstName") +
         " " + localStorage.getItem("lastName") + "!";
     document.querySelector("#shipment").innerHTML = "We will be shipping it to your address: " + localStorage.getItem("address");
@@ -174,7 +174,7 @@ Webbläsaren kastar Syntax-errors samt Reference-errors på mig. Syntax-errorsen
 som webbläsaren hänvisar till. 
 
 Reference-errorsen säger att funktionerna i scriptet inte är definierade. Jag sökte runt lite på nätet och kom inte egentligen fram till något
-konkret om varför. HTML samt den lilla CSS som jag har fungerade, men som sagt inga funktioner. Jag försökte debugga i devtoolsen och
+konkret om varför. HTML samt den lilla CSS som finns fungerar, men som sagt inga funktioner. Jag försökte debugga i devtoolsen och
 blev fundersam om mitt script över huvud taget lästes in, för jag kunde inte hitta det någonstans i webbläsaren. Det tillsammans med det faktum att
 de enda funktionerna som det klagades på i konsolen var dem som låg i <script>-taggar eller dem som var kopplade till en knapp. Det ledde mig att tro
 att webbläsaren gjorde så gott den kunde, men när funktionerna blev kallade så fanns inga referenser till dem.
